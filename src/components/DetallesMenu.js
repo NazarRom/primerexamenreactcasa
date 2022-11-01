@@ -10,7 +10,7 @@ export default class DetallesMenu extends Component {
     especialidades: [],
     especialidad: "",
     status: false,
-    statusPut:false
+    statusPut: false,
   };
 
   loadSelect = () => {
@@ -19,7 +19,7 @@ export default class DetallesMenu extends Component {
     axios.get(url).then((res) => {
       this.setState({
         especialidades: res.data,
-        status: true
+        status: true,
       });
     });
   };
@@ -38,11 +38,11 @@ export default class DetallesMenu extends Component {
     var salario = this.cajaSalarioref.current.value;
     var request = "/api/Doctores/" + especialidad + "/" + salario;
     var url = Global.urlDoctores + request;
-    axios.put(url).then(res=>{
-        this.setState({
-            statusPut:true
-        })
-    })
+    axios.put(url).then((res) => {
+      this.setState({
+        statusPut: true,
+      });
+    });
   };
   componentDidMount = () => {
     this.loadSelect();
@@ -73,7 +73,10 @@ export default class DetallesMenu extends Component {
           <button>Incrementa salario</button>
         </form>
 
-        <TablaDoctores esp={this.state.especialidad} statusPut={this.state.statusPut}/>
+        <TablaDoctores
+          esp={this.state.especialidad}
+          statusPut={this.state.statusPut}
+        />
       </div>
     );
   }
